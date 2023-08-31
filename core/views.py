@@ -23,18 +23,16 @@ def item_list(request):
 
 @api_view(['POST'])
 def sing_up(request):
-    is_valid = request.headers['isvalid']
-    _user = request.headers['user']
-    _email = request.headers['email']
-    _password = request.headers['password']
+    is_valid = request.body['isvalid']
+    _user = request.body['user']
+    _email = request.body['email']
+    _password = request.body['password']
     if is_valid ==False:
         return Response('not valid')
     else:
         try:
             User.objects.create_user(username=_user.lower(), email=str(_email).lower(), password=_password)
-            u = User.objects.get(username=_user.lower())
-            token = Token.objects.create(user=u)
-            return Response(f'User create successfuly!\n User Token: {token}')
+            return Response(f'User create successfuly!')
         except:
             return Response(f'[ERRO] Erro to create user {_user}.\nUser already exists')
 
@@ -42,8 +40,9 @@ def sing_up(request):
 @api_view(['GET'])
 def is_user_available(request):
     print(User.objects.all())
-    _user = request.headers['user']
-    _email = request.headers['email']
+    content = json.loads(request.body)
+    _user = content['username']
+#    _email = content['email']
     print(_user)
     data = {'is_available': False,
             'notify': '',
