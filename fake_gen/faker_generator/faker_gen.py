@@ -3,23 +3,34 @@ from faker import Faker
 import json
 
 
-
 fake = Faker()
 
 class UserGen():
-    def gen():
-        fake_user = {
-            'name': fake.name(),
-            'email': fake.free_email(),
-            'password': '123'
-        }
-        return fake_user
+    def gen(n):
+        new_accounts = []
+        for i in range(0, n):
+                first_name = fake.first_name()
+                last_name = fake.last_name()
+                fake_user = {
+                            'username': '%s%s%s' % (first_name,last_name,fake.random_number(digits=2, fix_len=False)),
+                            'first_name': first_name,
+                            'end_name': last_name,
+                            'phone': fake.phone_number(),
+                            'email': f'{first_name}{last_name}{fake.random_number()}@{fake.free_email_domain()}',
+                            'password': '123',
+                            'ip': {'ipv4': fake.ipv4(), 'ipv6': fake.ipv6()}
+                        }
+                new_accounts.append(fake_user)
+        return new_accounts
     
 class ItemGen():
     def gen():
+        path = os.getcwd()
+#        path = path.replace('c:\\', 'c://')
         try:
-            with open('shop_itens.json', 'r') as file:
-                j = json.load(file)
-                return j
+            path = os.getcwd()
+            file = open(path.replace('\\','/')+'/fake_gen/faker_generator/shop_itens.json', 'r')
+            j = json.load(file)
+            return j
         except:
             return 'ERRO on read shop_itens.json file'

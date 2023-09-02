@@ -7,8 +7,10 @@ import json
 
 @api_view(['GET'])
 def user_gen(request):
-    user = UserGen.gen()
-    return Response(user)
+    body =json.loads(request.body)
+    n = body['number']
+    accounts = UserGen.gen(n)
+    return Response(accounts)
 
 @api_view(['GET'])
 def item_gen(request):
