@@ -1,16 +1,15 @@
-from generators.usergen import UserGen
-from generators.itemgen import ItemGen
+from typing import Type
+from .generators.igenerator import IGenerator
 
-
+"""
+Fake Generator
+"""
 class FakerGen:
-    def __init__(self, usercount:int = 0, itemcount:int = 0):
-        self.usercount = usercount
-        self.itemcount = itemcount
+        def generate(generator: Type[IGenerator]):
+                return generator.generator()
     
-    def usergen(self):
-        fake_users = UserGen.gen(self.usercount)
-        return fake_users
-    
-    def itemgen(self):
+"""   
+        def itemgen(self):
         fake_itens = ItemGen.gen()
         return fake_itens
+"""

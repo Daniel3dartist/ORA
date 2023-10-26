@@ -14,6 +14,10 @@ from .serializers import ItemSerializer
 
 import json
 
+"""
+Debit:
+    Abstract the code in view
+"""
 
 @api_view(['GET'])
 def item_list(request):
@@ -40,7 +44,6 @@ def sing_up(request):
 
 @api_view(['GET'])
 def is_user_available(request):
-    print(User.objects.all())
     content = json.loads(request.body)
     _user = content['username']
 #    _email = content['email']
@@ -63,6 +66,7 @@ def is_user_available(request):
 #@permission_classes([IsAuthenticated])
 #@staff_member_required
 #@authentication_classes([BasicAuthentication])
+"""
 @api_view(['POST'])
 def post_item(request):
     if request.method == "POST":
@@ -73,3 +77,4 @@ def post_item(request):
             serializer.save()
             return JsonResponse(serializer.data, status=201)
         return JsonResponse(serializer.errors, status=400)
+"""
