@@ -4,15 +4,19 @@ from .faker_generator.faker_gen import FakerGen
 from rest_framework.decorators import api_view
 from .faker_generator.generators.usergen import UserGen
 import json
+from django.http import HttpResponse
 
 
 @api_view(['GET'])
 def user_gen(request):
-    body = json.loads(request.body)
-    n = body['number']
+    """Fake user generator view
+    """
+    print('Foi o body? -> ', request.body)
+    n = int(request.GET['number'])
     fake = FakerGen
     accounts = fake.generate(UserGen(count=n))
-    return Response(accounts)
+    return Response(data=json.dumps(accounts))
+
 
 @api_view(['GET'])
 def item_gen(request):

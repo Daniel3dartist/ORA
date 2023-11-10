@@ -20,31 +20,47 @@ Debit:
 """
 
 @api_view(['GET'])
-def item_list(request):
+def items(request):
     if request.method == "GET":
-        itens = Item.objects.all()
-        serializer = ItemSerializer(itens, many = True)
-        return Response(serializer.data)
+        items_count = int(request.GET['number'])
+        if items_count == None:
+            itens = Item.objects.all()
+            serializer = ItemSerializer(itens, many = True)
+            return Response('passou aqui') #Response(serializer.data)
 
 @api_view(['POST'])
 def sing_up(request):
-    is_valid = request.body['isvalid']
     _user = request.body['user']
     _email = request.body['email']
     _password = request.body['password']
-    if is_valid ==False:
+    is_valid = '' # Need to add validator
+    if is_valid == False:
         return Response('not valid')
     else:
         try:
-            User.objects.create_user(username=_user.lower(), email=str(_email).lower(), password=_password)
+            User.objects.create_user(username=_user.lower(), 
+                                     email=str(_email).lower(), 
+                                     password=_password)
+            
             return Response(f'User create successfuly!')
         except:
             return Response(f'[ERRO] Erro to create user {_user}.\nUser already exists')
 
+@api_view(['POST', 'GET', "PUT", "DELETE"])
+def users(request):
+    if request.method == 'POST':
+        pass
+    elif request.method == "GET":
+        pass
+    elif request.method == "PUT":
+        pass
+    elif request.method == "DELETE":
+        pass
 
+"""
 @api_view(['GET'])
-def is_user_available(request):
-    content = json.loads(request.body)
+def users(request):
+    content = request.GET
     _user = content['username']
 #    _email = content['email']
     print(_user)
@@ -61,7 +77,7 @@ def is_user_available(request):
     except:
         data['is_available'] = True
         return Response(data)
-
+"""
 
 #@permission_classes([IsAuthenticated])
 #@staff_member_required
