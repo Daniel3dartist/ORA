@@ -7,9 +7,6 @@ import json
 fake = Faker()
 
 class UserGenProduct(IGenProduct):
-    def __init__(self, count: int = 0):
-         self.count = count
-
     def gen(self):
         new_accounts = []
         for i in range(0, self.count):

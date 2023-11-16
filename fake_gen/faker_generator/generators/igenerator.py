@@ -7,6 +7,8 @@ from .igen_product import IGenProduct
 Factory Creator Interface for Generator
 """
 class IGenerator(ABC):
+    def __init__(self):
+        self.count: int = 1
     """
     Factory method
     """    
