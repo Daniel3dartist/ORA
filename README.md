@@ -54,11 +54,14 @@ python3 -m venv venv
 pyton -m venv venv
 ```
 ### Activating the virtual environment
-To activate our venv just put this command in the terminal:
+To activate our venv just write this command in the terminal:
 ```
 cd venv/Scripts/
+```
+```
 activate
 ```
+
 Once you are in the virtual environment, run the following command to update pip:
 
 **Linux**
