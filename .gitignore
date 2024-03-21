@@ -1,4 +1,7 @@
 db.sqlite3*
-__pycache__*
 venv*
 .vscode*
+*__pycache__
+/dist
+/pyFBID.egg-info
+/pyFBIG.egg-info
