@@ -1,4 +1,6 @@
 # ORA - Open REST API
+![GitHub License](https://img.shields.io/github/license/Daniel3dartist/ORA) ![python tests](https://github.com/Daniel3dartist/ORA/actions/workflows/ci.yml/badge.svg) [![codecov](https://codecov.io/gh/Daniel3dartist/ORA/graph/badge.svg?token=JVT0O2O9SE)](https://codecov.io/gh/Daniel3dartist/ORA) 
+
 The objective of ORA is to create data procedurally that can be used to create temporary databases or used directly in testing front-end and mobile applications, the ease comes from using Docker for this, the front-end and mobile developer will have a tool simulating the back-end without having to master a lot of knowledge to do so.
 
 # About development
@@ -51,10 +53,17 @@ python3 -m venv venv
 ```
 **Windows**
 ```
-pyton -m venv venv
+python -m venv venv
 ```
 ### Activating the virtual environment
 To activate our venv just write this command in the terminal:
+
+**Linux**
+```
+source venv/bin/activate
+```
+
+**Windows**
 ```
 cd venv/Scripts/
 ```

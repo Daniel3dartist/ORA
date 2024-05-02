@@ -1,14 +1,13 @@
 from django.test import TestCase
-from ..faker_generator.faker_gen import FakerGen
-from ..faker_generator.generators.usergen import UserGen
+from fake_gen.faker_generator.faker_gen import FakerGen
+from fake_gen.faker_generator.generators.usergen import UserGen
 
 
-class TestFakeGen(TestCase): # Django manage.py test
-#class TestFakeGen: # Pytest
+#class TestFakeGen(TestCase): # Django manage.py test
+class TestFakeGen: # Pytest
     def test_gen(self):
         fake = FakerGen
-        user_gen = UserGen()
-        user_gen.count = 2
+        user_gen = UserGen(count=2)
         result = fake.generate(user_gen)
         print(result)
         print(type(result))

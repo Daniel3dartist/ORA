@@ -1,0 +1,10 @@
+db.sqlite3*
+venv*
+.vscode*
+*__pycache__
+/dist
+/pyFBID.egg-info
+/pyFBIG.egg-info
+/htmlcov
+.coverage
+.coveragerc

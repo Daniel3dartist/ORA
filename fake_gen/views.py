@@ -11,7 +11,6 @@ from django.http import HttpResponse
 def user_gen(request):
     """Fake user generator view
     """
-    print('Foi o body? -> ', request.body)
     n = int(request.GET['number'])
     fake = FakerGen
     accounts = fake.generate(UserGen(count=n))
