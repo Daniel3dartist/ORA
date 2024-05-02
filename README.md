@@ -53,10 +53,17 @@ python3 -m venv venv
 ```
 **Windows**
 ```
-pyton -m venv venv
+python -m venv venv
 ```
 ### Activating the virtual environment
 To activate our venv just write this command in the terminal:
+
+**Linux**
+```
+source venv/bin/activate
+```
+
+**Windows**
 ```
 cd venv/Scripts/
 ```
