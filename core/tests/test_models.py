@@ -1,5 +1,5 @@
 from django.test import TestCase
-from ..models import MyUser #, Item
+from ..models import MyUser, Item
 from fake_gen.faker_generator.faker_gen import FakerGen
 from fake_gen.faker_generator.generators.usergen import UserGen
 import json
@@ -7,9 +7,10 @@ import json
 fake = FakerGen
 
 class TestModels(TestCase):
+#class TestModels:
     def setUp(self):
         
-        fuser = fake.generate(UserGen(1)) # Fake User Generation
+        fuser = fake.generate(UserGen(count=1)) # Fake User Generation
         fuser = fuser[0]
         user = MyUser.objects.create(username=fuser['username'],
                                      first_name=fuser['first_name'],
@@ -19,7 +20,7 @@ class TestModels(TestCase):
                                      password=fuser['password'],
                                      ip=json.dumps(fuser['ip']))
 #        print(MyUser.objects.all())
-#        item = Item.objects.create()
+        item = Item.objects.create()
 
     def test_models(self):
         print(MyUser.objects.all())

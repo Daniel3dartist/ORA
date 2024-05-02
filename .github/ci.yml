@@ -23,12 +23,12 @@ jobs:
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
-          cd pyFBIG
+
           python3 -m pip install -r requirements.txt
       - name: Run tests and Upload coverage reports to Codecov
         run: |
           python3 -m pip install pytest
-          pytest tests --cov
+          pytest tests --cov core fake_gen
           curl -Os https://uploader.codecov.io/latest/linux/codecov
           chmod +x codecov
           ./codecov -t ${{secrets.CODECOV_TOKEN}}
