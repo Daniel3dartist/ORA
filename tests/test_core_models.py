@@ -1,5 +1,5 @@
 from django.test import TestCase
-from ..models import MyUser, Item
+from core.models import MyUser, Item
 from fake_gen.faker_generator.faker_gen import FakerGen
 from fake_gen.faker_generator.generators.usergen import UserGen
 import json

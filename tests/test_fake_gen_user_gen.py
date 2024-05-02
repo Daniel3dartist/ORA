@@ -1,6 +1,6 @@
 from django.test import TestCase
-from ..faker_generator.faker_gen import FakerGen
-from ..faker_generator.generators.usergen import UserGen
+from fake_gen.faker_generator.faker_gen import FakerGen
+from fake_gen.faker_generator.generators.usergen import UserGen
 
 
 #class TestFakeGen(TestCase): # Django manage.py test
