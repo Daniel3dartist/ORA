@@ -24,7 +24,7 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip
           python3 -m pip install -r requirements.txt
-          pytest tests --cov=fake_gen/tests fake_gen/tests
+          pytest tests --cov fake_gen/tests fake_gen/tests
           curl -Os https://uploader.codecov.io/latest/linux/codecov
           chmod +x codecov
           ./codecov -t ${{secrets.CODECOV_TOKEN}}
