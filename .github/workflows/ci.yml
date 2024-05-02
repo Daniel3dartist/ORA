@@ -28,7 +28,7 @@ jobs:
       - name: Run tests and Upload coverage reports to Codecov
         run: |
           python3 -m pip install pytest
-          pytest tests --cov core fake_gen
+          pytest tests --cov
           curl -Os https://uploader.codecov.io/latest/linux/codecov
           chmod +x codecov
           ./codecov -t ${{secrets.CODECOV_TOKEN}}
