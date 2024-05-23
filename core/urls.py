@@ -10,5 +10,5 @@ urlpatterns = [
     path('users/', views.users, name='users'),
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('fake_gen/', include(urls))
+    path('fake-gen/', include(urls))
 ]

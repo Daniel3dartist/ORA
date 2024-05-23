@@ -9,12 +9,17 @@ from django.http import HttpResponse
 
 @api_view(['GET'])
 def user_gen(request):
-    """Fake user generator view
+    """Fake user generator
+    Parameters:
+        count: int
     """
-    n = int(request.GET['number'])
+    try:
+        n = int(request.GET["number"])
+    except:
+        n=1
     fake = FakerGen
     accounts = fake.generate(UserGen(count=n))
-    return Response(data=json.dumps(accounts))
+    return Response(accounts)
 
 
 @api_view(['GET'])
